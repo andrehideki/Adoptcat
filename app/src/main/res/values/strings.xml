@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Adoptcat</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="adoptcat_description">Adoptcat</string>
+    <string name="login_email_hint">E-mail</string>
+    <string name="login_password_hint">Senha</string>
+    <string name="login_login">Entrar</string>
+    <string name="forgot_password_register">Esqueceu a senha?</string>
+    <string name="login_register">Ainda não tem conta? registre-se aqui</string>
+    <string name="register_label">Cadastrar</string>
+    <string name="register_name_hint">Nome</string>
+    <string name="register_email_hint">E-mail</string>
+    <string name="register_password_hint">Senha</string>
+    <string name="register_finish_button">Finalizar</string>
+    <string name="register_phone_hint">Telefone</string>
+    <string name="title_activity_maps_fragment">Map</string>
+    <string name="forgot_password_textview">Esqueceu a senha?</string>
+    <string name="forgot_password_tip_textview">Entre com o seu email abaixo para que possamos proseguir.</string>
+    <string name="reset_password_button">Resetar senha</string>
+    <string name="nav_anounce_title">Anunciar</string>
+    <string name="nav_maps_title">Mapa</string>
+    <string name="nav_profile_title">Perfil</string>
+    <string name="nav_logout_title">Sair</string>
+    <string name="account_city">Cidade</string>
+    <string name="account_phone">Telefone</string>
+    <string name="registercat_description">Descrição</string>
+    <string name="registercat_amoutcats">Qtde:</string>
+    <string name="registercat_location">Localização</string>
+    <string name="registercat_getcurrentlocatio">Localização atual</string>
+    <string name="registercat_definelocation">Definir</string>
+    <string name="registercat_annotation">Observação</string>
+    <string name="adoptcats_description">Descrição</string>
+    <string name="adoptcats_annotation">Observações</string>
+</resources>
