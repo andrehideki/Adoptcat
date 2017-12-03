@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="phone_user" />
+    <string name="city_user" />
+    <string name="user_name" />
+    <string name="user_email" />
+    <string name="user_cat" />
+    <string name="phone_user_cat" />
+    <string name="email_adoptcat" />
+</resources>

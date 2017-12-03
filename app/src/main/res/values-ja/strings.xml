@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Adoptcat</string>
+    <string name="action_settings">設定</string>
+    <string name="adoptcat_description">Adoptcat</string>
+    <string name="login_email_hint">Eメール</string>
+    <string name="login_password_hint">パスワード</string>
+    <string name="login_login">ログイン</string>
+    <string name="forgot_password_register">パスワードをお忘れですか？</string>
+    <string name="login_register">アカウントはまだありませんか？ ここに登録</string>
+    <string name="register_label">登録</string>
+    <string name="register_name_hint">名</string>
+    <string name="register_email_hint">Eメール</string>
+    <string name="register_password_hint">パスワード</string>
+    <string name="register_finish_button">フィニッシュ</string>
+    <string name="register_phone_hint">電話</string>
+    <string name="title_activity_maps_fragment">地図</string>
+    <string name="forgot_password_textview">パスワードをお忘れですか？</string>
+    <string name="forgot_password_tip_textview">下記のメールアドレスを入力してください。</string>
+    <string name="reset_password_button">パスワードを再設定する</string>
+    <string name="nav_anounce_title">アナウンス</string>
+    <string name="nav_maps_title">地図</string>
+    <string name="nav_profile_title">プロフィール</string>
+    <string name="nav_logout_title">出口</string>
+    <string name="account_city">シティ</string>
+    <string name="account_phone">電話</string>
+    <string name="registercat_description">説明</string>
+    <string name="registercat_amoutcats">量：</string>
+    <string name="registercat_location">ロケーション</string>
+    <string name="registercat_getcurrentlocatio">現在位置</string>
+    <string name="registercat_definelocation">定義する</string>
+    <string name="registercat_annotation">注意</string>
+    <string name="adoptcats_description">説明</string>
+    <string name="adoptcats_annotation">ノート</string>
+    <string name="phone_user" />
+    <string name="city_user" />
+    <string name="user_name" />
+    <string name="user_email" />
+    <string name="user_cat" />
+    <string name="phone_user_cat" />
+    <string name="email_adoptcat" />
+    <string name="call">コール</string>
+</resources>

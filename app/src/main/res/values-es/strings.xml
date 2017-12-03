@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Adoptcat</string>
+    <string name="action_settings">Configuraciones</string>
+    <string name="adoptcat_description">Adoptcat</string>
+    <string name="login_email_hint">E-mail</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_login">Iniciar sesión</string>
+    <string name="forgot_password_register">¿Se te olvidó tu contraseña?</string>
+    <string name="login_register">¿No tienes cuenta aún? Registrar aquí</string>
+    <string name="register_label">Registro</string>
+    <string name="register_name_hint">Nombre</string>
+    <string name="register_email_hint">E-mail</string>
+    <string name="register_password_hint">Contraseña</string>
+    <string name="register_finish_button">Terminar</string>
+    <string name="register_phone_hint">Teléfono</string>
+    <string name="title_activity_maps_fragment">Mapa</string>
+    <string name="forgot_password_textview">¿Se te olvidó tu contraseña?</string>
+    <string name="forgot_password_tip_textview">Ingrese su correo electrónico a continuación para que podamos continuar.</string>
+    <string name="reset_password_button">Restablecer la contraseña</string>
+    <string name="nav_anounce_title">Anunciar</string>
+    <string name="nav_maps_title">Mapa</string>
+    <string name="nav_profile_title">Perfil</string>
+    <string name="nav_logout_title">Salida</string>
+    <string name="account_city">Ciudad</string>
+    <string name="account_phone">Teléfono</string>
+    <string name="registercat_description">Descripción</string>
+    <string name="registercat_amoutcats">Cantidad:</string>
+    <string name="registercat_location">Ubicación</string>
+    <string name="registercat_getcurrentlocatio">Ubicación actual</string>
+    <string name="registercat_definelocation">Definir</string>
+    <string name="registercat_annotation">Nota</string>
+    <string name="adoptcats_description">Descripción</string>
+    <string name="adoptcats_annotation">Notas</string>
+    <string name="phone_user" />
+    <string name="city_user" />
+    <string name="user_name" />
+    <string name="user_email" />
+    <string name="user_cat" />
+    <string name="phone_user_cat" />
+    <string name="email_adoptcat" />
+    <string name="call">llamada</string>
+</resources>

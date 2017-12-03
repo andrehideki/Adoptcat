@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Adoptcat</string>
+    <string name="action_settings">die Einstellungen</string>
+    <string name="adoptcat_description">Adoptcat</string>
+    <string name="login_email_hint">"E-mail "</string>
+    <string name="login_password_hint">Passwort</string>
+    <string name="login_login">Anmeldung</string>
+    <string name="forgot_password_register">Passwort vergessen?</string>
+    <string name="login_register">Noch keinen Account? Hier registrieren</string>
+    <string name="register_label">Registrieren</string>
+    <string name="register_name_hint">Name</string>
+    <string name="register_email_hint">"E-mail "</string>
+    <string name="register_password_hint">Passwort</string>
+    <string name="register_finish_button">Fertig</string>
+    <string name="register_phone_hint">Telefon</string>
+    <string name="title_activity_maps_fragment">Karte</string>
+    <string name="forgot_password_textview">Passwort vergessen?</string>
+    <string name="forgot_password_tip_textview">Geben Sie unten Ihre E-Mail-Adresse ein, damit wir fortfahren können.</string>
+    <string name="reset_password_button">Passwort zurücksetzen</string>
+    <string name="nav_anounce_title">Bekannt geben</string>
+    <string name="nav_maps_title">Karte</string>
+    <string name="nav_profile_title">Profil</string>
+    <string name="nav_logout_title">Ausgang</string>
+    <string name="account_city">Stadt</string>
+    <string name="account_phone">Telefon</string>
+    <string name="registercat_description">Beschreibung</string>
+    <string name="registercat_amoutcats">Menge:</string>
+    <string name="registercat_location">Ort</string>
+    <string name="registercat_getcurrentlocatio">Aktueller Standort</string>
+    <string name="registercat_definelocation">Definieren</string>
+    <string name="registercat_annotation">Hinweis</string>
+    <string name="adoptcats_description">Beschreibung</string>
+    <string name="adoptcats_annotation">Anmerkungen</string>
+    <string name="phone_user" />
+    <string name="city_user" />
+    <string name="user_name" />
+    <string name="user_email" />
+    <string name="user_cat" />
+    <string name="phone_user_cat" />
+    <string name="email_adoptcat" />
+    <string name="call">Anruf</string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Adoptcat</string>
+    <string name="action_settings">Configurações</string>
+    <string name="adoptcat_description">Adoptcat</string>
+    <string name="login_email_hint">E-mail</string>
+    <string name="login_password_hint">Senha</string>
+    <string name="login_login">Entrar</string>
+    <string name="forgot_password_register">Esqueceu a senha?</string>
+    <string name="login_register">Ainda não tem conta? Registre-se aqui</string>
+    <string name="register_label">Registro</string>
+    <string name="register_name_hint">Nome</string>
+    <string name="register_email_hint">"E-mail "</string>
+    <string name="register_password_hint">Senha</string>
+    <string name="register_finish_button">Finalizar</string>
+    <string name="register_phone_hint">Telefone</string>
+    <string name="title_activity_maps_fragment">Mapa</string>
+    <string name="forgot_password_textview">Esqueceu a senha?</string>
+    <string name="forgot_password_tip_textview">Digite seu email abaixo para que possamos prosseguir.</string>
+    <string name="reset_password_button">Redefinir Senha</string>
+    <string name="nav_anounce_title">Anunciar</string>
+    <string name="nav_maps_title">Mapa</string>
+    <string name="nav_profile_title">Perfil</string>
+    <string name="nav_logout_title">Sair</string>
+    <string name="account_city">Cidade</string>
+    <string name="account_phone">Telefone</string>
+    <string name="registercat_description">Descrição</string>
+    <string name="registercat_amoutcats">Qtde:</string>
+    <string name="registercat_location">Localização</string>
+    <string name="registercat_getcurrentlocatio">Localização atual</string>
+    <string name="registercat_definelocation">Definir</string>
+    <string name="registercat_annotation">Nota</string>
+    <string name="adoptcats_description">Descrição</string>
+    <string name="adoptcats_annotation">Notas</string>
+    <string name="phone_user" />
+    <string name="city_user" />
+    <string name="user_name" />
+    <string name="user_email" />
+    <string name="user_cat" />
+    <string name="phone_user_cat" />
+    <string name="email_adoptcat" />
+    <string name="call">Ligar</string>
+</resources>
