@@ -10,4 +10,5 @@
     <dimen name="default_layout_padding">20dp</dimen>
     <dimen name="margin_account_photo">30dp</dimen>
     <dimen name="big_textsize">24sp</dimen>
+    <dimen name="material_button_elevation">8dp</dimen>
 </resources>

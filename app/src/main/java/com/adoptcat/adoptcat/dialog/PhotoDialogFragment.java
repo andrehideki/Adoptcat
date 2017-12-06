@@ -14,9 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.adoptcat.adoptcat.MainActivity;
 import com.adoptcat.adoptcat.R;
-import com.adoptcat.adoptcat.RegisterActivity;
+import com.adoptcat.adoptcat.activities.RegisterActivity;
 
 import static android.app.Activity.RESULT_OK;
 

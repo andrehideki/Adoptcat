@@ -1,4 +1,4 @@
-package com.adoptcat.adoptcat;
+package com.adoptcat.adoptcat.fragments;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class RegisterCatActivity extends Fragment {
+import com.adoptcat.adoptcat.R;
+
+public class RegisterCatFragment extends Fragment {
 
     @Nullable
     @Override

@@ -17,22 +17,26 @@
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginTop="@dimen/margin_account_photo"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_account_photo"
+                android:contentDescription="Adoptcat"
                 android:src="@drawable/pata" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="User name"
-                android:textStyle="bold"
-                android:textColor="@android:color/white" />
+                android:contentDescription="@string/user_name"
+                android:text="@string/user_name"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="user@email.com"
+                android:contentDescription="@string/user_email"
+                android:text="@string/user_email"
                 android:textColor="@android:color/white" />
 
 
@@ -44,26 +48,36 @@
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:padding="@dimen/default_padding">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/account_city"
                 android:text="@string/account_city"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/cityTextView"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cityTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="italic"
-                android:text="Cotia"/>
+                android:contentDescription="@string/city_user"
+                android:text="@string/city_user"
+                android:textStyle="italic" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/account_phone"/>
-            <TextView android:id="@+id/phoneTextView"
+                android:contentDescription="@string/account_phone"
+                android:text="@string/account_phone"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/phoneTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="italic"
-                android:text="11 7070-7070"/>
+                android:contentDescription="@string/phone_user"
+                android:text="@string/phone_user"
+                android:textStyle="italic" />
         </LinearLayout>
 
 

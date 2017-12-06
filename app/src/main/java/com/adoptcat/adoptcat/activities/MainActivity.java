@@ -1,8 +1,12 @@
-package com.adoptcat.adoptcat;
+package com.adoptcat.adoptcat.activities;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,9 +17,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.adoptcat.adoptcat.R;
+import com.adoptcat.adoptcat.connection.Connection;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        auth = Connection.getFirebaseAuth();
     }
 
     @Override
@@ -88,11 +99,38 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_maps) {
 
         } else if (id == R.id.nav_logout) {
-
+            showLogoffDialog();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showLogoffDialog() {
+        AlertDialog.Builder builder;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(MainActivity.this);
+        }
+        builder.setTitle( getString( R.string.main_loggof_alert_title))
+        .setMessage( getString( R.string.main_loggof_alert_message ) )
+        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                auth.signOut();
+                startActivity( new Intent( MainActivity.this, LoginActivity.class ));
+                finish();
+            }
+        })
+        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setIcon(R.drawable.icon_alert_logout);
+        builder.show();
     }
 }

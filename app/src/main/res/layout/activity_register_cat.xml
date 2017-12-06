@@ -8,7 +8,7 @@
     android:columnCount="6"
     android:padding="@dimen/default_padding"
     android:useDefaultMargins="true"
-    tools:context="com.adoptcat.adoptcat.RegisterCatActivity">
+    tools:context="com.adoptcat.adoptcat.fragments.RegisterCatFragment">
 
     <ImageView
         android:layout_width="90dp"
@@ -44,6 +44,7 @@
     <TextView
         android:layout_columnSpan="6"
         android:layout_row="1"
+        android:contentDescription="@string/registercat_description"
         android:text="@string/registercat_description"
         android:textSize="@dimen/big_textsize"
         android:textStyle="bold" />
@@ -57,6 +58,7 @@
     <TextView
         android:layout_column="0"
         android:layout_row="4"
+        android:contentDescription="@string/registercat_amoutcats"
         android:text="@string/registercat_amoutcats" />
 
     <android.support.v7.widget.AppCompatSeekBar
@@ -72,6 +74,7 @@
     <TextView
         android:layout_column="0"
         android:layout_row="5"
+        android:contentDescription="@string/registercat_location"
         android:text="@string/registercat_location" />
 
     <TextView
@@ -87,6 +90,7 @@
         android:layout_columnSpan="3"
         android:layout_row="6"
         android:background="@color/colorAccent"
+        android:contentDescription="@string/registercat_getcurrentlocatio"
         android:text="@string/registercat_getcurrentlocatio"
         android:textColor="@color/darkBrown"
         android:textStyle="bold" />
@@ -94,15 +98,17 @@
     <Button
         android:layout_column="3"
         android:layout_columnSpan="3"
+        android:layout_gravity="end"
         android:layout_row="6"
         android:background="@color/colorAccent"
+        android:contentDescription="@string/registercat_definelocation"
         android:text="@string/registercat_definelocation"
         android:textColor="@color/darkBrown"
-        android:textStyle="bold"
-        android:layout_gravity="end"/>
+        android:textStyle="bold" />
 
     <TextView
         android:layout_columnSpan="6"
+        android:contentDescription="@string/registercat_annotation"
         android:text="@string/registercat_annotation"
         android:textSize="@dimen/big_textsize"
         android:textStyle="bold" />

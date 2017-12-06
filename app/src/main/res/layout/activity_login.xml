@@ -7,7 +7,7 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     android:padding="@dimen/default_padding"
-    tools:context="com.adoptcat.adoptcat.LoginActivity">
+    tools:context="com.adoptcat.adoptcat.activities.LoginActivity">
 
     <ImageView
         android:id="@+id/logoLogin"
@@ -27,6 +27,7 @@
             android:id="@+id/emailLoginEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/login_email_hint"
             android:hint="@string/login_email_hint"
             android:inputType="textEmailAddress"
             android:maxLines="1"
@@ -43,6 +44,7 @@
             android:id="@+id/passwordLoginEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/login_password_hint"
             android:hint="@string/login_password_hint"
             android:inputType="textPassword"
             android:textColor="@android:color/background_light"
@@ -56,26 +58,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@color/colorPrimaryDark"
+        android:contentDescription="@string/login_login"
         android:text="@string/login_login"
+        android:elevation="8dp"
         android:textColor="@android:color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:onClick="doLogin"/>
 
     <Button
         android:id="@+id/forgotPasswordLoginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
+        android:contentDescription="@string/forgot_password_register"
         android:gravity="center"
         android:text="@string/forgot_password_register"
-        android:textColor="@android:color/background_light" />
+        android:textColor="@android:color/background_light"
+        android:onClick="openForgotPasswordActivity"/>
 
     <Button
         android:id="@+id/registerLoginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
+        android:contentDescription="@string/login_register"
         android:gravity="center"
         android:text="@string/login_register"
-        android:textColor="@android:color/background_light" />
+        android:textColor="@android:color/background_light"
+        android:onClick="openResgisterActivity"/>
 
 </LinearLayout>
