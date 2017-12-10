@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/gradient_background"
     android:orientation="vertical"
     android:padding="@dimen/default_padding"
     tools:context="com.adoptcat.adoptcat.activities.LoginActivity">
 
     <ImageView
         android:id="@+id/logoLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="270dp"
+        android:layout_height="270dp"
         android:layout_gravity="center"
-        android:layout_weight="1"
         android:contentDescription="@string/adoptcat_description"
         android:paddingBottom="40dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/logo" />
 
     <android.support.design.widget.TextInputLayout
@@ -54,37 +54,44 @@
 
     <Button
         android:id="@+id/loginLoginButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/custom_button"
         android:contentDescription="@string/login_login"
-        android:text="@string/login_login"
         android:elevation="8dp"
+        android:onClick="doLogin"
+        android:text="@string/login_login"
+        android:layout_marginBottom="8dp"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        android:onClick="doLogin"/>
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/forgotPasswordLoginButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
+        android:layout_gravity="center"
+        android:background="@drawable/fgtpassword_button"
         android:contentDescription="@string/forgot_password_register"
-        android:gravity="center"
+        android:elevation="8dp"
+        android:onClick="openForgotPasswordActivity"
         android:text="@string/forgot_password_register"
-        android:textColor="@android:color/background_light"
-        android:onClick="openForgotPasswordActivity"/>
+        android:layout_marginBottom="4dp"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/background_light" />
 
     <Button
         android:id="@+id/registerLoginButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
+        android:background="@drawable/register_button"
         android:contentDescription="@string/login_register"
         android:gravity="center"
+        android:onClick="openResgisterActivity"
         android:text="@string/login_register"
-        android:textColor="@android:color/background_light"
-        android:onClick="openResgisterActivity"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/darkBrown"
+        android:layout_gravity="center"
+        android:elevation="8dp"/>
 
 </LinearLayout>

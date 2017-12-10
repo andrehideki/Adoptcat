@@ -38,7 +38,7 @@
     <string name="call">Call</string>
     <string name="phone_user" />
     <string name="city_user" />
-    <string name="user_name" />
+    <string name="user_name" translatable="false">User name</string>
     <string name="user_email" />
     <string name="user_cat" />
     <string name="phone_user_cat" />
@@ -62,4 +62,7 @@
     <string name="main_loggof_alert_title">Realizar Logoff</string>
     <string name="main_loggof_alert_message">Tem certeza que deseja sair do aplicativo?</string>
     <string name="nav_notifies">Notificações</string>
+    <string name="account_photo_description">Foto do usuário</string>
+    <string name="dig_update_title">Atualize</string>
+    <string name="dig_field_empty">Campo está vazio</string>
 </resources>

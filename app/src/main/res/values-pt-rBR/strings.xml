@@ -34,7 +34,7 @@
     <string name="adoptcats_annotation">Notas</string>
     <string name="phone_user" />
     <string name="city_user" />
-    <string name="user_name" />
+    <string name="user_name" >Nome do usuário</string>
     <string name="user_email" />
     <string name="user_cat" />
     <string name="phone_user_cat" />

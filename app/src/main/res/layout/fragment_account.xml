@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.adoptcat.adoptcat.fragments.AdoptCatsFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/gradient_background"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout">
+
+            <ImageView android:id="@+id/userPhotoImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_account_photo"
+                android:layout_marginBottom="5dp"
+                android:contentDescription="@string/account_photo_description"
+                android:src="@drawable/pata" />
+
+            <TextView android:id="@+id/userNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Nome do usuário"
+                android:textColor="@android:color/background_light"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="visible"
+                android:elevation="8dp"/>
+
+            <TextView android:id="@+id/userEmailTextView"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="e-mail"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/background_light"
+                android:visibility="visible"
+                android:gravity="center_horizontal"
+                android:elevation="8dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="30dp">
+
+            <android.support.v7.widget.CardView android:id="@+id/cityCardView"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:elevation="8dp"
+                app:cardCornerRadius="8dp"
+                android:padding="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/locationImageView"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@+id/cityUserTextView"
+                        android:src="@drawable/ic_location" />
+
+                    <TextView
+                        android:id="@+id/cityTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/cityUserTextView"
+                        android:layout_centerHorizontal="true"
+                        android:contentDescription="@string/account_city"
+                        android:text="@string/account_city"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/cityUserTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/locationImageView"
+                        android:layout_centerHorizontal="true"
+                        android:text="Cotia" />
+
+                    <ImageButton
+                        android:id="@+id/editCityButton"
+                        style="@android:style/Widget.Material.ImageButton"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_edit" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:elevation="8dp"
+                app:cardCornerRadius="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/phoneImageView"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@+id/textView"
+                        android:src="@drawable/ic_phone" />
+
+                    <ImageButton
+                        android:id="@+id/editPhoneButton"
+                        style="@android:style/Widget.Material.ImageButton"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_edit" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/account_phone"
+                        android:text="@string/account_phone"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/userPhoneTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView"
+                        android:layout_centerHorizontal="true"
+                        android:contentDescription="@string/phone_user"
+                        android:text="11 9933-4564"
+                        android:textStyle="italic" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+</LinearLayout>
