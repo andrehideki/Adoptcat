@@ -61,4 +61,5 @@
     <string name="login_sucessful">Login realizado</string>
     <string name="main_loggof_alert_title">Realizar Logoff</string>
     <string name="main_loggof_alert_message">Tem certeza que deseja sair do aplicativo?</string>
+    <string name="nav_notifies">Notificações</string>
 </resources>

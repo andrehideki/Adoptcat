@@ -11,7 +11,7 @@
             android:title="@string/nav_profile_title" />
         <item
             android:id="@+id/nav_alert"
-            android:icon="@drawable/icon_anunciar"
+            android:icon="@drawable/icon_notifies"
             android:title="@string/nav_anounce_title" />
 
         <item

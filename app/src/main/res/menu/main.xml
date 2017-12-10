@@ -2,8 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/nav_maps"
+        android:title="@string/nav_maps_title"
+        android:icon="@drawable/icon_map"/>
+    <item
+        android:id="@+id/nav_profile"
+        android:title="@string/nav_profile_title"
+        android:icon="@drawable/icon_profile"/>
+
+    <item
+        android:id="@+id/nav_anounce"
+        android:title="@string/nav_anounce_title"
+        android:icon="@drawable/icon_add"/>
+
+    <item
+        android:id="@+id/nav_notifies"
+        android:title="@string/nav_notifies"
+        android:icon="@drawable/icon_notifies"/>
+
+    <item
+        android:id="@+id/nav_logout"
+        android:title="@string/nav_logout_title"
+        android:icon="@drawable/icon_logout"/>
+
+
+
 </menu>
