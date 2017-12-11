@@ -3,19 +3,27 @@ package com.adoptcat.adoptcat.model;
 import android.graphics.Bitmap;
 import android.net.Uri;
 
-/**
- * Created by hideki on 03/12/17.
- */
 
 public class User {
 
-    private String UUID, name, email, phone;
+    private String UUID, name, email, phone, city;
+    private static User user;
 
-    public User() {}
-    public User(String name, String email, String phone) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
+    private User() {}
+
+    public static User getInstance() {
+        return (user == null)? user = new User() : user;
+    }
+
+    public static void destroyUser() {
+        user = null;
+    }
+
+    public static void cloneState( User u ) {
+        user.setPhone( u.getPhone() );
+        user.setEmail( u.getEmail() );
+        user.setName( u.getName() );
+        user.setCity( u.getCity() );
     }
 
     public String getUUID() {
@@ -50,5 +58,11 @@ public class User {
         this.phone = phone;
     }
 
+    public String getCity() {
+        return city;
+    }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
 }

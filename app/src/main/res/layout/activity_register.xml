@@ -50,14 +50,13 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <EditText
-                    android:id="@+id/emailRegisterEditText"
+                    android:id="@+id/cityRegisterEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/register_email_hint"
-                    android:hint="@string/register_email_hint"
-                    android:inputType="textEmailAddress"
+                    android:contentDescription="@string/register_city_hint"
+                    android:hint="@string/register_city_hint"
+                    android:inputType="textCapCharacters"
                     android:textColor="@android:color/background_light"
                     android:textColorHint="@android:color/background_light" />
             </android.support.design.widget.TextInputLayout>
@@ -77,6 +76,21 @@
             </android.support.design.widget.TextInputLayout>
 
 
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/emailRegisterEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/register_email_hint"
+                    android:hint="@string/register_email_hint"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/background_light"
+                    android:textColorHint="@android:color/background_light" />
+            </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

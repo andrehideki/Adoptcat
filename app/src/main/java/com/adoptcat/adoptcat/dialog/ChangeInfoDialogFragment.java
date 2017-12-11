@@ -28,7 +28,7 @@ public class ChangeInfoDialogFragment extends DialogFragment implements View.OnC
     private Button confirmButton, cancelButton;
 
 
-    
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

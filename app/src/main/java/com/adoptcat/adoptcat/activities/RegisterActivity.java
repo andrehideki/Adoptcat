@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private ImageButton takePhotoButton;
     private EditText nameRegisterEditText, emailRegisterEditText, phoneRegisterEditText,
-            passwordRegisterEditText;
+            passwordRegisterEditText, cityRegisterEditText;
     private Button finishRegisterButton;
     private static Uri photo;
 
@@ -45,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         emailRegisterEditText = (EditText) findViewById(R.id.emailRegisterEditText);
         phoneRegisterEditText = (EditText) findViewById(R.id.phoneRegisterEditText);
         passwordRegisterEditText = (EditText) findViewById(R.id.passwordRegisterEditText);
+        cityRegisterEditText = (EditText) findViewById(R.id.cityRegisterEditText);
         finishRegisterButton = (Button) findViewById(R.id.finishRegisterButton);
         finishRegisterButton.setOnClickListener( this );
     }
@@ -70,15 +71,20 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     public void finishRegister() {
 
-        String name, email, phone, password;
+        String name, email, phone, password, city;
 
         name = nameRegisterEditText.getText().toString();
         email = emailRegisterEditText.getText().toString();
         phone = phoneRegisterEditText.getText().toString();
         password = passwordRegisterEditText.getText().toString();
+        city = cityRegisterEditText.getText().toString();
 
         if(verifyFields()) {
-            final User user = new User( name, email, phone );
+            final User user = User.getInstance();
+            user.setName( name );
+            user.setEmail( email );
+            user.setPhone( phone );
+            user.setCity( city );
             FirebaseAuth auth = Connection.getFirebaseAuth();
 
             auth.createUserWithEmailAndPassword( email, password ).
@@ -91,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 user.setUUID( Connection.getFirebaseUser().getUid() );
 
                                 databaseReference.child( user.getUUID() ).setValue( user );
+                                //TODO diminuir o tamanho da imagem para não estourar o buffer
                                 storageReference.child( user.getUUID() ).child("UserPhoto").putFile( photo );
                                 showMessage( getString(R.string.register_finished ));
                                 finish();
@@ -107,12 +114,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 !(emailRegisterEditText.getText().toString().isEmpty()) &&
                 !(phoneRegisterEditText.getText().toString().isEmpty()) &&
                 !(passwordRegisterEditText.getText().toString().isEmpty()) &&
-                photo != null;
+                !(cityRegisterEditText.getText().toString().isEmpty());
     }
 
 
     private void showMessage( String msg ) {
-        Toast.makeText( this, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText( this, msg, Toast.LENGTH_SHORT ).show();
     }
 
     @Override

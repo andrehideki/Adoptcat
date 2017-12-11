@@ -16,13 +16,19 @@ import android.view.MenuItem;
 import com.adoptcat.adoptcat.R;
 import com.adoptcat.adoptcat.connection.Connection;
 import com.adoptcat.adoptcat.fragments.AccountFragment;
+import com.adoptcat.adoptcat.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView mainBottomNavView;
-    private FirebaseAuth auth;
     private BottomNavigationView.OnNavigationItemSelectedListener mBottomNavItemSelectedListener;
+
+    private FirebaseAuth auth;
+    private FirebaseUser fUser;
+
+    private User user;
 
     private FragmentManager fragmentManager;
 
@@ -52,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
         mainBottomNavView.setOnNavigationItemSelectedListener(mBottomNavItemSelectedListener);
 
         auth = Connection.getFirebaseAuth();
+        fUser = Connection.getFirebaseUser();
+
+        user = User.getInstance();
+        user.setUUID( fUser.getUid() );
     }
 
 

@@ -65,4 +65,6 @@
     <string name="account_photo_description">Foto do usuário</string>
     <string name="dig_update_title">Atualize</string>
     <string name="dig_field_empty">Campo está vazio</string>
+    <string name="register_city_hint">City</string>
+    <string name="account_failed_donwload_uphoto">Failed to download user photo</string>
 </resources>
