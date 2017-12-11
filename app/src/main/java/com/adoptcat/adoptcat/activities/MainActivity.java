@@ -2,10 +2,8 @@ package com.adoptcat.adoptcat.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -13,9 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.adoptcat.adoptcat.fragments.MapsFragment;
 import com.adoptcat.adoptcat.R;
 import com.adoptcat.adoptcat.connection.Connection;
 import com.adoptcat.adoptcat.fragments.AccountFragment;
+import com.adoptcat.adoptcat.fragments.RegisterCatFragment;
 import com.adoptcat.adoptcat.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 switch( id ) {
+                    case R.id.nav_anounce:
+                        openRegisterCatFragment();
+                        return true;
+                    case R.id.nav_notifies:
+                        return true;
+                    case R.id.nav_maps:
+                        openMapsFragment();
+                        return true;
                     case R.id.nav_profile:
                         openAccountFragment();
                         return true;
@@ -62,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
         user = User.getInstance();
         user.setUUID( fUser.getUid() );
+
+        openMapsFragment();
     }
 
 
@@ -98,6 +108,25 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.main_content, new AccountFragment());
+        ft.commit();
+    }
+
+    private void openMapsFragment() {
+
+        if(fragmentManager == null)
+            fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.main_content, new MapsFragment());
+        ft.commit();
+    }
+
+    private void openRegisterCatFragment() {
+        if(fragmentManager == null)
+            fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.main_content, new RegisterCatFragment());
         ft.commit();
     }
 

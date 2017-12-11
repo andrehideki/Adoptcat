@@ -50,7 +50,7 @@ public class PhotoDialogFragment extends DialogFragment implements View.OnClickL
     }
 
 
-    public void takePicture() {
+    public void choosePhoto() {
         Intent cameraItent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraItent, CAMERA_REQUEST_CODE );
     }
@@ -63,7 +63,7 @@ public class PhotoDialogFragment extends DialogFragment implements View.OnClickL
 
         switch( id ) {
             case R.id.photoImageView:
-                takePicture();
+                choosePhoto();
                 break;
             case R.id.confirmButton:
                 if( photo != null )dismiss();

@@ -1,5 +1,6 @@
 package com.adoptcat.adoptcat.fragments;
 
+import android.app.FragmentManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
@@ -10,12 +11,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adoptcat.adoptcat.R;
 import com.adoptcat.adoptcat.connection.Connection;
+import com.adoptcat.adoptcat.dialog.ChangeInfoDialogFragment;
+import com.adoptcat.adoptcat.dialog.PhotoDialogFragment;
 import com.adoptcat.adoptcat.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,10 +31,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-public class AccountFragment extends Fragment {
+public class AccountFragment extends Fragment implements View.OnClickListener {
 
     private TextView userNameTextView, cityUserTextView, userPhoneTextView, userEmailTextView;
     private ImageView userPhotoImageView;
+    private ImageButton editInformationsButton;
 
     private User user;
     private DatabaseReference databaseReference;
@@ -39,6 +44,7 @@ public class AccountFragment extends Fragment {
     private Bitmap userPhoto;
 
     final long ONE_MEGABYTE = 1024 * 1024;
+    public final static String DIALOG_TAG = "PhotoDialog";
 
 
     @Nullable
@@ -52,7 +58,9 @@ public class AccountFragment extends Fragment {
         userPhoneTextView = (TextView) view.findViewById(R.id.userPhoneTextView);
         userEmailTextView = (TextView) view.findViewById(R.id.userEmailTextView);
         userPhotoImageView = (ImageView) view.findViewById(R.id.userPhotoImageView);
+        editInformationsButton = (ImageButton) view.findViewById(R.id.editInformationsButton);
 
+        editInformationsButton.setOnClickListener(this);
         return view;
     }
 
@@ -112,4 +120,17 @@ public class AccountFragment extends Fragment {
         Toast.makeText( getActivity(), msg, Toast.LENGTH_LONG ).show();
     }
 
+
+    public void showChangeInfoDialog() {
+
+        FragmentManager manager = getActivity().getFragmentManager();
+        ChangeInfoDialogFragment dialog = new ChangeInfoDialogFragment();
+        dialog.show( manager, DIALOG_TAG );
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        showChangeInfoDialog();
+    }
 }

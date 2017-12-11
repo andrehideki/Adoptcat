@@ -7,45 +7,58 @@
     android:orientation="vertical"
     tools:context="com.adoptcat.adoptcat.fragments.AdoptCatsFragment">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="@drawable/gradient_background"
-            android:orientation="vertical"
-            android:id="@+id/linearLayout">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:background="@drawable/gradient_background"
+        android:orientation="vertical">
 
-            <ImageView android:id="@+id/userPhotoImageView"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/margin_account_photo"
-                android:layout_marginBottom="5dp"
-                android:contentDescription="@string/account_photo_description"
-                android:src="@drawable/pata" />
+        <ImageView
+            android:id="@+id/userPhotoImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="@dimen/margin_account_photo"
+            android:contentDescription="@string/account_photo_description"
+            android:src="@drawable/pata" />
 
-            <TextView android:id="@+id/userNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Nome do usuário"
-                android:textColor="@android:color/background_light"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:visibility="visible"
-                android:elevation="8dp"/>
+        <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:elevation="8dp"
+            android:text="Nome do usuário"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/background_light"
+            android:visibility="visible" />
 
-            <TextView
-                android:id="@+id/userEmailTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:elevation="8dp"
-                android:gravity="center_horizontal"
-                android:text="e-mail"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/background_light"
-                android:visibility="visible" />
+        <TextView
+            android:id="@+id/userEmailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:elevation="8dp"
+            android:gravity="center_horizontal"
+            android:text="e-mail"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@android:color/background_light"
+            android:visibility="visible" />
 
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/editInformationsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:background="@color/cardview_shadow_start_color"
+            android:src="@drawable/ic_edit" />
+
+    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -91,14 +104,6 @@
                         android:layout_centerHorizontal="true"
                         android:text="Cotia" />
 
-                    <ImageButton
-                        android:id="@+id/editCityButton"
-                        style="@android:style/Widget.Material.ImageButton"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:src="@drawable/ic_edit" />
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
@@ -120,15 +125,6 @@
                         android:layout_alignParentTop="true"
                         android:layout_toStartOf="@+id/textView"
                         android:src="@drawable/ic_phone" />
-
-                    <ImageButton
-                        android:id="@+id/editPhoneButton"
-                        style="@android:style/Widget.Material.ImageButton"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:src="@drawable/ic_edit" />
 
                     <TextView
                         android:id="@+id/textView"

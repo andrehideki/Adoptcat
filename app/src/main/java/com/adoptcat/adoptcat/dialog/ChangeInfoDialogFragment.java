@@ -17,6 +17,9 @@ import android.widget.Toast;
 
 import com.adoptcat.adoptcat.R;
 import com.adoptcat.adoptcat.activities.RegisterActivity;
+import com.adoptcat.adoptcat.connection.Connection;
+import com.adoptcat.adoptcat.model.User;
+import com.google.firebase.database.DatabaseReference;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -24,9 +27,10 @@ import static android.app.Activity.RESULT_OK;
 public class ChangeInfoDialogFragment extends DialogFragment implements View.OnClickListener {
 
 
-    private EditText infoEditText;
+    private EditText nameEditText, phoneEditText, cityEditText;
     private Button confirmButton, cancelButton;
-
+    private String name, phone, city;
+    private User user;
 
 
     @Nullable
@@ -35,7 +39,9 @@ public class ChangeInfoDialogFragment extends DialogFragment implements View.OnC
 
         View view =  inflater.inflate(R.layout.dialog_change_information, null);
 
-        infoEditText = (EditText) view.findViewById(R.id.infoEditText);
+        nameEditText = (EditText) view.findViewById(R.id.nameEditText);
+        phoneEditText = (EditText) view.findViewById(R.id.phoneEditText);
+        cityEditText = (EditText) view.findViewById(R.id.cityEditText);
         confirmButton = (Button) view.findViewById(R.id.confirmButton);
         cancelButton = (Button) view.findViewById(R.id.cancelButton);
 
@@ -43,12 +49,9 @@ public class ChangeInfoDialogFragment extends DialogFragment implements View.OnC
         confirmButton.setOnClickListener(this);
 
 
+        initViewsWithUserValues();
+
         return view;
-    }
-
-
-    public void changeInformation() {
-
     }
 
 
@@ -59,9 +62,12 @@ public class ChangeInfoDialogFragment extends DialogFragment implements View.OnC
 
         switch( id ) {
             case R.id.confirmButton:
-                String info = infoEditText.getText().toString();
-                if(!info.isEmpty()) finishUpdate();
-                else showMessage( getString(R.string.dig_field_empty));
+                if( verifyFieds() ) {
+                    finishUpdate();
+                    dismiss();
+                }
+                else
+                    showMessage( getString(R.string.dig_field_empty));
                 break;
             case R.id.cancelButton:
                 this.dismiss();
@@ -71,10 +77,28 @@ public class ChangeInfoDialogFragment extends DialogFragment implements View.OnC
 
 
     private void finishUpdate() {
-
+        DatabaseReference databaseReference = Connection.getDatabaseUsersReference().child( user.getUUID() );
+        user.setName( this.name );
+        user.setCity( this.city );
+        user.setPhone( this.phone );
+        databaseReference.setValue( user );
     }
 
     public void showMessage( String msg ) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+    }
+
+    private void initViewsWithUserValues() {
+        user = User.getInstance();
+        nameEditText.setText( user.getName() );
+        phoneEditText.setText( user.getPhone() );
+        cityEditText.setText( user.getCity() );
+    }
+
+    private boolean verifyFieds() {
+        this.name = nameEditText.getText().toString().trim();
+        this.phone = phoneEditText.getText().toString().trim();
+        this.city = cityEditText.getText().toString().trim();
+        return !name.isEmpty() && !phone.isEmpty() && !city.isEmpty();
     }
 }

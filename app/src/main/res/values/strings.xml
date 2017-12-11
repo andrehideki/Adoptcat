@@ -31,7 +31,7 @@
     <string name="registercat_amoutcats">Amount:</string>
     <string name="registercat_location">Location</string>
     <string name="registercat_getcurrentlocatio">Current Location</string>
-    <string name="registercat_definelocation">Define</string>
+    <string name="registercat_definelocation">Define location</string>
     <string name="registercat_annotation">Note</string>
     <string name="adoptcats_description">Description</string>
     <string name="adoptcats_annotation">Notes</string>
@@ -67,4 +67,18 @@
     <string name="dig_field_empty">Campo está vazio</string>
     <string name="register_city_hint">City</string>
     <string name="account_failed_donwload_uphoto">Failed to download user photo</string>
+    <string name="dig_name_hint">Name</string>
+    <string name="dig_phone_hint">Phone</string>
+    <string name="dig_city_hint">City</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps2">Map</string>
+    <string name="registercat_check_vaccinated">Vaccinated</string>
+    <string name="registercat_check_dewormed">Dewormed</string>
+    <string name="registercat_check_spayed">Spayed</string>
+    <string name="registercat_information">Informations</string>
+    <string name="registercat_select_photo">Select a photo</string>
+    <string name="dialog_takephoto_option">Take photo</string>
+    <string name="dialog_choosephoto_option">Choose from library</string>
+    <string name="dialog_cancel_option">Cancel</string>
+    <string name="dialog_title">Choose photo</string>
 </resources>
