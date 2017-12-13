@@ -44,13 +44,13 @@ public class Connection {
         return databaseReference.child("Users");
     }
 
-    public static DatabaseReference getProblemsDatabaseReference() {
+    public static DatabaseReference getAnnouncementsDatabaseReference() {
         if(databaseReference == null) {
-            databaseReference = FirebaseDatabase.getInstance().
-                    getReferenceFromUrl("https://urban-fix-teste.firebaseio.com/Alerts" );
+            firebaseDatabase = FirebaseDatabase.getInstance();
             firebaseDatabase.setPersistenceEnabled( true );
+            databaseReference = firebaseDatabase.getReference();
         }
-        return databaseReference;
+        return databaseReference.child("Announcements");
     }
 
 

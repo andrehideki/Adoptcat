@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.replace(R.id.main_content, new RegisterCatFragment());
+        ft.add(R.id.main_content, new RegisterCatFragment()).addToBackStack( "teste" );
         ft.commit();
     }
 

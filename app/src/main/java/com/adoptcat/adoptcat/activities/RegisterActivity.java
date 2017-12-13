@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void showTakePictureDialog( View view ) {
-
+        //TODO trocar aqui
         FragmentManager manager = getFragmentManager();
         if( dialog == null ) dialog = new PhotoDialogFragment();
         dialog.show( manager, DIALOG_TAG );

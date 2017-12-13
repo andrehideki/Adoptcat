@@ -81,4 +81,10 @@
     <string name="dialog_choosephoto_option">Choose from library</string>
     <string name="dialog_cancel_option">Cancel</string>
     <string name="dialog_title">Choose photo</string>
+    <string name="request_permission">É preciso a permissão</string>
+    <string name="request_permission_title">Request permission</string>
+    <string name="request_permission_dialog_ok">Ok</string>
+    <string name="request_permission_dialog_cancel">Cancel</string>
+    <string name="registercat_fieldsproblem">The values are not valid</string>
+    <string name="dialog_title_setmylocation">Define your location</string>
 </resources>

@@ -8,6 +8,7 @@ public class User {
 
     private String UUID, name, email, phone, city;
     private static User user;
+    private int amountOfAnnounces;
 
     private User() {}
 
@@ -24,6 +25,7 @@ public class User {
         user.setEmail( u.getEmail() );
         user.setName( u.getName() );
         user.setCity( u.getCity() );
+        user.setAmountOfAnnounces( u.getAmountOfAnnounces() );
     }
 
     public String getUUID() {
@@ -64,5 +66,13 @@ public class User {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public int getAmountOfAnnounces() {
+        return amountOfAnnounces;
+    }
+
+    public void setAmountOfAnnounces(int amountOfAnnounces) {
+        this.amountOfAnnounces = amountOfAnnounces;
     }
 }
