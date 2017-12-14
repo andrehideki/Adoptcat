@@ -16,9 +16,9 @@
         android:icon="@drawable/icon_add"/>
 
     <item
-        android:id="@+id/nav_notifies"
+        android:id="@+id/nav_announcements"
         android:title="@string/nav_notifies"
-        android:icon="@drawable/icon_notifies"/>
+        android:icon="@drawable/ic_cat"/>
 
     <item
         android:id="@+id/nav_logout"

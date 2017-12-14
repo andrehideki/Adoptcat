@@ -87,4 +87,11 @@
     <string name="request_permission_dialog_cancel">Cancel</string>
     <string name="registercat_fieldsproblem">The values are not valid</string>
     <string name="dialog_title_setmylocation">Define your location</string>
+    <string name="mapfrag_imhere">I\'m here!</string>
+    <string name="myannounces_title">My announcements</string>
+    <string name="list_iten_vaccinetedcheck">Vaccinated</string>
+    <string name="list_iten_dewomedcheck">Dewomed</string>
+    <string name="list_iten_spayedcheck">Spayed</string>
+    <string name="registercat_success_">Cat has been regitred!</string>
+    <string name="registercat_title">Title</string>
 </resources>

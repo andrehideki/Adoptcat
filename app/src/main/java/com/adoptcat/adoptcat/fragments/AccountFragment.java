@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-public class AccountFragment extends Fragment implements View.OnClickListener {
+public class AccountFragment extends Fragment implements View.OnClickListener, ValueEventListener {
 
     private TextView userNameTextView, cityUserTextView, userPhoneTextView, userEmailTextView;
     private ImageView userPhotoImageView;
@@ -73,19 +73,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         databaseReference = Connection.getDatabaseUsersReference().child( user.getUUID() );
         storageReference = Connection.getStorageReference().child( user.getUUID() ).child("UserPhoto");
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User u = dataSnapshot.getValue( User.class );
-                User.cloneState( u );
-                updateViews();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        databaseReference.addValueEventListener(this);
 
         //Picasso.with( getContext() ).load("gs://adoptcat-ee784.appspot.com/" + user.getUUID() + "/UserPhoto");
 /*
@@ -130,7 +118,25 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        databaseReference.removeEventListener( this );
+    }
+
+    @Override
     public void onClick(View v) {
         showChangeInfoDialog();
+    }
+
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+        User u = dataSnapshot.getValue( User.class );
+        User.cloneState( u );
+        updateViews();
+    }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
+
     }
 }

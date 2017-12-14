@@ -15,6 +15,7 @@ import com.adoptcat.adoptcat.fragments.MapsFragment;
 import com.adoptcat.adoptcat.R;
 import com.adoptcat.adoptcat.connection.Connection;
 import com.adoptcat.adoptcat.fragments.AccountFragment;
+import com.adoptcat.adoptcat.fragments.MyAnnouncementsFragment;
 import com.adoptcat.adoptcat.fragments.RegisterCatFragment;
 import com.adoptcat.adoptcat.model.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_anounce:
                         openRegisterCatFragment();
                         return true;
-                    case R.id.nav_notifies:
+                    case R.id.nav_announcements:
+                        openMyAnnouncementsFragment();
                         return true;
                     case R.id.nav_maps:
                         openMapsFragment();
@@ -127,6 +129,15 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.add(R.id.main_content, new RegisterCatFragment()).addToBackStack( "teste" );
+        ft.commit();
+    }
+
+    private void openMyAnnouncementsFragment() {
+        if(fragmentManager == null)
+            fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.add(R.id.main_content, new MyAnnouncementsFragment()).addToBackStack( "teste" );
         ft.commit();
     }
 

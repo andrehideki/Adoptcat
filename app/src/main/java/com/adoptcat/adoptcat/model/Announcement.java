@@ -5,8 +5,9 @@ import android.graphics.Bitmap;
 
 public class Announcement {
 
-    private String description, date, location, id;
+    private String description, date, id, title, phone, userUUID;
     private int amount;
+    private double latitude, longitude;
     private boolean vaccineted, dewomed,spayed;
 
     private Bitmap catPhoto;
@@ -14,16 +15,6 @@ public class Announcement {
 
     public Announcement() {}
 
-    public Announcement(String description, String date, String location, int amount, boolean vaccineted,
-                  boolean dewomed, boolean spayed) {
-        this.description = description;
-        this.date = date;
-        this.location = location;
-        this.amount = amount;
-        this.vaccineted = vaccineted;
-        this.dewomed = dewomed;
-        this.spayed = spayed;
-    }
 
     public String getDescription() {
         return description;
@@ -41,12 +32,20 @@ public class Announcement {
         this.amount = amount;
     }
 
-    public String getLocation() {
-        return location;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public boolean isVaccineted() {
@@ -95,5 +94,29 @@ public class Announcement {
 
     public void setCatPhoto(Bitmap catPhoto) {
         this.catPhoto = catPhoto;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getUserUUID() {
+        return userUUID;
+    }
+
+    public void setUserUUID(String userUUID) {
+        this.userUUID = userUUID;
     }
 }
