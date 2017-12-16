@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.adoptcat.adoptcat.R;
@@ -23,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MyAnnouncementsFragment extends Fragment implements ChildEventListener {
+public class MyAnnouncementsFragment extends Fragment implements ChildEventListener, AdapterView.OnItemClickListener{
 
     private ListView announcementsListView;
 
@@ -50,6 +51,7 @@ public class MyAnnouncementsFragment extends Fragment implements ChildEventListe
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         adapter = new AnouncementArrayAdapter( getActivity(), this.announcements );
+        announcementsListView.setOnItemClickListener( this );
         announcementsListView.setAdapter( adapter );
     }
 
@@ -85,4 +87,11 @@ public class MyAnnouncementsFragment extends Fragment implements ChildEventListe
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Announcement announcement = announcements.get(position);
+
+
+    }
 }

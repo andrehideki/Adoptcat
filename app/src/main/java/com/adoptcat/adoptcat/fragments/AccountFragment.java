@@ -16,20 +16,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.adoptcat.adoptcat.R;
 import com.adoptcat.adoptcat.connection.Connection;
 import com.adoptcat.adoptcat.dialog.ChangeInfoDialogFragment;
-import com.adoptcat.adoptcat.dialog.PhotoDialogFragment;
 import com.adoptcat.adoptcat.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
+
+
+import com.adoptcat.adoptcat.R;
 
 public class AccountFragment extends Fragment implements View.OnClickListener, ValueEventListener {
 
@@ -43,7 +42,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener, V
 
     private Bitmap userPhoto;
 
-    final long ONE_MEGABYTE = 1024 * 1024;
+    final long THREE_MB = 1024 * 1024 * 4;
     public final static String DIALOG_TAG = "PhotoDialog";
 
 
@@ -75,12 +74,20 @@ public class AccountFragment extends Fragment implements View.OnClickListener, V
 
         databaseReference.addValueEventListener(this);
 
-        //Picasso.with( getContext() ).load("gs://adoptcat-ee784.appspot.com/" + user.getUUID() + "/UserPhoto");
-/*
-        storageReference.getBytes( ONE_MEGABYTE ).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+
+        //Picasso.with( getContext() ).load("gs://adoptcat-ee784.appspot.com/" + user.getUUID() + "/UserPhoto").
+          //      resize(userPhotoImageView.getMaxWidth(), userPhotoImageView.getMaxHeight()).into(userPhotoImageView);
+
+        storageReference.getBytes( THREE_MB ).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
-                userPhoto = BitmapFactory.decodeByteArray( bytes, 0, bytes.length );
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
+                options.inSampleSize = calculateSize( options, userPhotoImageView.getWidth(), userPhotoImageView.getHeight());
+
+                options.inJustDecodeBounds = false;
+                userPhoto = BitmapFactory.decodeByteArray( bytes, 0, bytes.length, options );
                 updateImageView();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -89,8 +96,21 @@ public class AccountFragment extends Fragment implements View.OnClickListener, V
                 showMessage( getString(R.string.account_failed_donwload_uphoto ) );
             }
         });
-        */
 
+    }
+
+    private int calculateSize(BitmapFactory.Options options, int imageViewWidth, int imageViewHeight) {
+        int width = options.outWidth;
+        int height = options.outHeight;
+        int f = 1;
+        if( height > imageViewHeight || width > imageViewHeight ) {
+            int halfWidth = width / 2;
+            int halfHeight = height / 2;
+            while( halfHeight / f > imageViewHeight && halfWidth / f > imageViewWidth ) {
+                f *= 2;
+            }
+        }
+        return f;
     }
 
     private void updateViews() {

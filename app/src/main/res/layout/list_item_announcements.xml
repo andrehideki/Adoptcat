@@ -2,45 +2,38 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:columnCount="2">
-    <TextView android:id="@+id/titleTextView"
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_row="0"
         android:text="Title"
-        android:layout_row="0"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <TextView android:id="@+id/dataTextView"
         android:text="Date"
-        android:layout_row="0"
-        android:layout_column="1"/>
-    <TextView android:id="@+id/amountTextView"
         android:layout_row="1"
+        android:layout_column="0"/>
+    <TextView android:id="@+id/amountTextView"
+        android:layout_row="2"
         android:layout_column="0"
         android:text="Amount:"/>
     <CheckedTextView android:id="@+id/vaccinetedCheckedTextView"
-        android:layout_row="1"
-        android:layout_column="1"
-        android:layout_gravity="end"
-        android:text="@string/list_iten_vaccinetedcheck"/>
-    <CheckedTextView android:id="@+id/dewomedCheckedTextView"
         android:layout_row="2"
         android:layout_column="1"
-        android:layout_gravity="end"
-        android:text="@string/list_iten_dewomedcheck"/>
-    <CheckedTextView android:id="@+id/spayedCheckedTextView"
+        android:text="@string/list_iten_vaccinetedcheck"/>
+    <CheckedTextView android:id="@+id/dewomedCheckedTextView"
         android:layout_row="3"
         android:layout_column="1"
-        android:layout_gravity="end"
+        android:text="@string/list_iten_dewomedcheck"/>
+    <CheckedTextView android:id="@+id/spayedCheckedTextView"
+        android:layout_row="4"
+        android:layout_column="1"
         android:text="@string/list_iten_spayedcheck"/>
     <TextView android:id="@+id/descriptionTextView"
-        android:layout_row="4"
+        android:layout_row="5"
         android:layout_column="0"
         android:text="Description"/>
 
-    <ImageButton
-        android:id="@+id/editAnnouncementButton"
-        android:layout_column="1"
-        android:layout_gravity="end"
-        android:layout_row="4"
-        android:background="@color/colorPrimaryDark"
-        android:src="@drawable/ic_edit" />
 
 
 </GridLayout>

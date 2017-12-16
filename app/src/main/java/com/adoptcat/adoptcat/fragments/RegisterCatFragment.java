@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -13,9 +14,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +38,9 @@ import com.adoptcat.adoptcat.utilities.Utility;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
@@ -67,6 +72,8 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
     private boolean vaccinated, dewomed, spayed;
 
     public final static String DIALOG_TAG = "LocationTag";
+
+
 
 
     @Nullable
@@ -111,7 +118,20 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
         int id = v.getId();
         switch (id) {
             case R.id.deflocationButton:
-                defMyLocation();
+                if(ActivityCompat.checkSelfPermission( getActivity(), Manifest.permission.ACCESS_FINE_LOCATION ) !=
+                        PackageManager.PERMISSION_GRANTED ) {
+                    if( ActivityCompat.shouldShowRequestPermissionRationale( getActivity(), Manifest.permission.ACCESS_FINE_LOCATION ) ) {
+                        ActivityCompat.requestPermissions( getActivity(),
+                                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                Utility.ACCESS_FINE_LOCATION_REQUEST_PERMISSION );
+                    } else {
+                        ActivityCompat.requestPermissions( getActivity(),
+                                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                Utility.ACCESS_FINE_LOCATION_REQUEST_PERMISSION );
+                    }
+                } else {
+                    defMyLocation();
+                }
                 break;
             case R.id.catImageView:
                 selectImage();
@@ -127,6 +147,8 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
                 announcement.setLatitude( MapsFragment.getClickedLocation().latitude );
                 announcement.setLongitude( MapsFragment.getClickedLocation().longitude );
                 fragMap.setVisibility(CoordinatorLayout.GONE);
+                finishFloatingActionButton.setVisibility(FloatingActionButton.VISIBLE);
+                cancelFloatingActionButton.setVisibility(FloatingActionButton.VISIBLE);
                 deflocationButton.setBackgroundColor( Color.GREEN );
                 deflocationButton.setTextColor( Color.WHITE );
                 locationTextView.setText("OK");
@@ -136,6 +158,8 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
     }
 
     private void defMyLocation() {
+        finishFloatingActionButton.setVisibility(FloatingActionButton.GONE);
+        cancelFloatingActionButton.setVisibility(FloatingActionButton.GONE);
         FragmentManager fragmentManager = getFragmentManager();
         android.support.v4.app.FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.fragMap, new MapsFragment());
@@ -167,8 +191,13 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
         announcement.setVaccineted( vaccinated );
         announcement.setPhone( user.getPhone() );
         announcement.setUserUUID( userUUID );
-        //Manda a foto
-        //StorageReference storageReference = Connection.getStorageReference().child(user.getUUID());
+        announcement.setId( userUUID + amountOfAnnounces );
+        //Manda a foto caso o usuário defina a foto
+        if(photoUri != null) {
+            StorageReference storageReference = Connection.getStorageReference().child(announcement.getId());
+            storageReference.putFile(photoUri);
+            announcement.setHasPhoto( true );
+        }
         //Salvando anuncio
         DatabaseReference databaseReference = Connection.getAnnouncementsDatabaseReference().child(userUUID + amountOfAnnounces);
         databaseReference.setValue( announcement ).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -181,24 +210,33 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
         user.setAmountOfAnnounces( user.getAmountOfAnnounces() + 1);
         databaseReference = Connection.getDatabaseUsersReference().child(userUUID);
         databaseReference.setValue( user );
+
     }
 
-    private void selectPhoto() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser( intent, getString(R.string.registercat_select_photo) ), SELECT_PHOTO_REQUEST);
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if( requestCode == RESULT_OK ) {
-            if( resultCode == SELECT_PHOTO_REQUEST ) {
-                Bundle b = data.getExtras();
-                photoBitmap = (Bitmap) b.get("data");
-                this.photoUri = data.getData();
-                catImageView.setImageBitmap( photoBitmap );
+        switch( requestCode ) {
+            case Utility.CAMERA_REQUEST_CODE: {
+                if(resultCode == RESULT_OK)  {
+                    photoUri = data.getData();
+                    photoBitmap = (Bitmap) ((data.getExtras()).get("data"));
+                    catImageView.setImageBitmap( photoBitmap );
+                }
+                break;
+            }
+            case Utility.READ_EXTERNAL_STORAGE_REQUEST_CODE: {
+                if (resultCode == RESULT_OK) {
+                    photoUri = data.getData();
+                    try {
+                        photoBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), photoUri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    catImageView.setImageBitmap(photoBitmap);
+                }
+                break;
             }
         }
     }
@@ -211,7 +249,6 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
         alertBuilder.setTitle( getString(R.string.dialog_title) );
         alertBuilder.setItems(options, new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
@@ -226,7 +263,7 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
                         dialog.dismiss();
                         break;
                     case 2://cancel
-
+                        dialog.cancel();
                 }
             }
         });
@@ -234,42 +271,69 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
     }
 
     private void cameraIntent() {
-        startActivityForResult( new Intent(MediaStore.ACTION_IMAGE_CAPTURE), TAKE_PHOTO_REQUEST );
+        if(ActivityCompat.checkSelfPermission( getActivity(), Manifest.permission.CAMERA) !=
+                PackageManager.PERMISSION_GRANTED ) {
+            if(ActivityCompat.shouldShowRequestPermissionRationale( getActivity(), Manifest.permission.CAMERA)) {
+                requestPermissions( new String[] { Manifest.permission.CAMERA },Utility.CAMERA_REQUEST_PERMISSION );
+            } else {
+                requestPermissions( new String[] { Manifest.permission.CAMERA },Utility.CAMERA_REQUEST_PERMISSION );
+            }
+        } else {
+            takePicture();
+        }
     }
 
     private void libraryIntent() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser( intent, getString(R.string.registercat_select_photo) ), SELECT_PHOTO_REQUEST);
+        if( ActivityCompat.checkSelfPermission( getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE ) !=
+                PackageManager.PERMISSION_GRANTED ) {
+            if( ActivityCompat.shouldShowRequestPermissionRationale( getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE )) {
+                requestPermissions( new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE},
+                        Utility.READ_EXTERNAL_STORAGE_REQUEST_PERMISSION);
+            } else {
+                requestPermissions( new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE},
+                        Utility.READ_EXTERNAL_STORAGE_REQUEST_PERMISSION);
+            }
+        } else {
+            selectPhoto();
+        }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch ( requestCode ) {
-            case Utility.PERMISSION_REQUEST:
-                for( int i = 0; i < permissions.length; i++ ) {
-                     if( permissions[i].equalsIgnoreCase(Manifest.permission.ACCESS_FINE_LOCATION )
-                             && grantResults[i] == PackageManager.PERMISSION_GRANTED ) {
-                         //Leia as minhas coordenadas
-                     }else if( permissions[i].equalsIgnoreCase( Manifest.permission.READ_EXTERNAL_STORAGE )
-                             && grantResults[i] == PackageManager.PERMISSION_GRANTED ) {
-                        libraryIntent();
-                     }else if( permissions[i].equalsIgnoreCase( Manifest.permission.CAMERA )
-                             && grantResults[i] == PackageManager.PERMISSION_GRANTED ) {
-                         cameraIntent();
-                     }
-                }
+            case Utility.CAMERA_REQUEST_PERMISSION: {
+                if( grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED )
+                    takePicture();
+            }
+            case Utility.READ_EXTERNAL_STORAGE_REQUEST_PERMISSION: {
+                if( grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED )
+                    selectPhoto();
+            }
         }
     }
-    private void showMessage( String msg ) {
-        Toast.makeText( getContext(), msg, Toast.LENGTH_LONG ).show();
+
+
+    private void selectPhoto() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser( intent, getString(R.string.registercat_select_photo) ), Utility.READ_EXTERNAL_STORAGE_REQUEST_CODE);
     }
+
+    private void takePicture() {
+        startActivityForResult( new Intent(MediaStore.ACTION_IMAGE_CAPTURE), Utility.CAMERA_REQUEST_CODE );
+    }
+
 
     public static void setVisibleConfirmFloatingActionButton() {
         confirmFloatingActionButton.setVisibility(FloatingActionButton.VISIBLE);
     }
+
+    private void showMessage( String msg ) {
+        Toast.makeText( getContext(), msg, Toast.LENGTH_LONG ).show();
+    }
+
 
 
 }

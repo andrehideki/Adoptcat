@@ -18,94 +18,14 @@ import com.adoptcat.adoptcat.R;
 public class Utility {
 
 
-    public static int currentAPIVersion = Build.VERSION.SDK_INT;
+    public static final int CAMERA_REQUEST_CODE = 5432;
+    public static final int READ_EXTERNAL_STORAGE_REQUEST_CODE = 5555;
 
-    public static final int PERMISSION_REQUEST = 4456;
+    public static final int CAMERA_REQUEST_PERMISSION = 6060;
+    public static final int READ_EXTERNAL_STORAGE_REQUEST_PERMISSION = 6666;
+    public static final int ACCESS_FINE_LOCATION_REQUEST_PERMISSION = 1997;
+    public static final int ACCESS_COARSE_LOCATION_REQUEST_PERMISSION = 2017;
 
-    public static boolean checkPermission(Context context ) {
-
-        if(currentAPIVersion >= android.os.Build.VERSION_CODES.M ) {
-            if(ContextCompat.checkSelfPermission( context,
-                    Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
-                if( ActivityCompat.shouldShowRequestPermissionRationale((Activity) context,
-                        Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                    ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                            PERMISSION_REQUEST);
-                } else {
-                    ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                            PERMISSION_REQUEST);
-                }
-                return false;
-            }
-            else
-                return true;
-        }
-        else
-            return true;
-    }
-
-    public static void checkLocationPermission( Context context ) {
-        if( ContextCompat.checkSelfPermission( context, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            if( ActivityCompat.shouldShowRequestPermissionRationale((Activity) context,
-                    Manifest.permission.ACCESS_FINE_LOCATION )) {
-                callDialog( context.getString(R.string.request_permission),
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, context);
-            }
-            else
-                ActivityCompat.requestPermissions((Activity) context,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST);
-        }
-    }
-
-    public static void checkAccesStoragePermission( Context context ) {
-        if( ContextCompat.checkSelfPermission( context, Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            if( ActivityCompat.shouldShowRequestPermissionRationale((Activity) context,
-                    Manifest.permission.READ_EXTERNAL_STORAGE )) {
-                callDialog( context.getString(R.string.request_permission),
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, context);
-            }
-            else
-                ActivityCompat.requestPermissions((Activity) context,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSION_REQUEST);
-        }
-    }
-
-    public static void checkCameraPermission( Context context ) {
-        if( ContextCompat.checkSelfPermission( context, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            if( ActivityCompat.shouldShowRequestPermissionRationale((Activity) context,
-                    Manifest.permission.CAMERA )) {
-                callDialog( context.getString(R.string.request_permission),
-                        new String[]{Manifest.permission.CAMERA}, context);
-            }
-            else
-                ActivityCompat.requestPermissions((Activity) context,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSION_REQUEST);
-        }
-    }
-
-    private static void callDialog(String msg, final String[] permission, final Context context) {
-
-        AlertDialog.Builder dialog = new AlertDialog.Builder( context );
-        dialog.setTitle( context.getString( R.string.request_permission_title) );
-        dialog.setMessage( msg );
-        dialog.setPositiveButton(context.getString(R.string.request_permission_dialog_ok), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ActivityCompat.requestPermissions((Activity) context, permission, PERMISSION_REQUEST);
-                dialog.dismiss();
-            }
-        })
-        .setNegativeButton(context.getString(R.string.request_permission_dialog_cancel), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-    }
 
 
 }

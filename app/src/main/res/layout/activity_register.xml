@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/gradient_background"
     android:orientation="vertical"
     android:columnCount="2"
     tools:context="com.adoptcat.adoptcat.activities.RegisterActivity"
@@ -112,7 +112,7 @@
                 android:background="?attr/colorAccent"
                 android:contentDescription="@string/register_button_takephoto"
                 app:srcCompat="@drawable/icon_camera"
-                android:onClick="showTakePictureDialog"
+                android:onClick="selectImage"
                 android:elevation="@dimen/material_button_elevation"/>
 
             <Button

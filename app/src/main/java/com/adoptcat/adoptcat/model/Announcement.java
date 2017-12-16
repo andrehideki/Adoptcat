@@ -3,14 +3,14 @@ package com.adoptcat.adoptcat.model;
 
 import android.graphics.Bitmap;
 
-public class Announcement {
+import java.io.Serializable;
+
+public class Announcement implements Serializable {
 
     private String description, date, id, title, phone, userUUID;
     private int amount;
     private double latitude, longitude;
-    private boolean vaccineted, dewomed,spayed;
-
-    private Bitmap catPhoto;
+    private boolean vaccineted, dewomed,spayed, hasPhoto;
 
 
     public Announcement() {}
@@ -88,12 +88,12 @@ public class Announcement {
         this.id = id;
     }
 
-    public Bitmap getCatPhoto() {
-        return catPhoto;
+    public boolean isHasPhoto() {
+        return hasPhoto;
     }
 
-    public void setCatPhoto(Bitmap catPhoto) {
-        this.catPhoto = catPhoto;
+    public void setHasPhoto(boolean hasPhoto) {
+        this.hasPhoto = hasPhoto;
     }
 
     public String getTitle() {

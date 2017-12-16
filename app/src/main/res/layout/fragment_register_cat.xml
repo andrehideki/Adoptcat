@@ -3,41 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/gradient_background"
     android:columnCount="3"
     android:padding="@dimen/default_padding"
     tools:context="com.adoptcat.adoptcat.fragments.RegisterCatFragment">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/finishFloatingActionButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        app:backgroundTint="#00c853"
-        app:layout_anchor="@+id/scrollView2"
-        app:layout_anchorGravity="right|bottom"
-        app:srcCompat="@drawable/icon_ok" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/cancelFloatingActionButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_column="0"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="10dp"
-        android:layout_row="1"
-        android:layout_rowWeight="2"
-        android:clickable="true"
-        app:backgroundTint="@android:color/holo_red_dark"
-        app:srcCompat="@drawable/icon_cancel" />
-
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_columnSpan="3"
         android:layout_columnWeight="1"
         android:layout_row="0"
@@ -156,9 +131,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/registercat_check_spayed" />
-
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
         </LinearLayout>
     </ScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/finishFloatingActionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        app:backgroundTint="#00c853"
+        app:layout_anchor="@+id/scrollView2"
+        app:layout_anchorGravity="right|bottom"
+        app:srcCompat="@drawable/icon_ok" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/cancelFloatingActionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:layout_row="1"
+        android:layout_rowWeight="2"
+        android:clickable="true"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:srcCompat="@drawable/icon_cancel" />
 
 </android.support.design.widget.CoordinatorLayout>

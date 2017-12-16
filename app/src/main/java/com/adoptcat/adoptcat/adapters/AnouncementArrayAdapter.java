@@ -19,7 +19,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class AnouncementArrayAdapter extends ArrayAdapter<Announcement> implements View.OnClickListener {
+public class AnouncementArrayAdapter extends ArrayAdapter<Announcement>  {
 
     private Context context;
     private ArrayList<Announcement> announcements;
@@ -37,7 +37,6 @@ public class AnouncementArrayAdapter extends ArrayAdapter<Announcement> implemen
         convertView = LayoutInflater.from( this.context ).inflate( R.layout.list_item_announcements, null);
         TextView dataTextView, amountTextView, descriptionTextView, titleTextView;
         CheckedTextView vaccinetedCheckedTextView, dewomedCheckedTextView, spayedCheckedTextView;
-        ImageButton editAnnouncementButton;
 
         titleTextView = (TextView) convertView.findViewById(R.id.titleTextView);
         dataTextView = (TextView) convertView.findViewById(R.id.dataTextView);
@@ -46,22 +45,17 @@ public class AnouncementArrayAdapter extends ArrayAdapter<Announcement> implemen
         vaccinetedCheckedTextView = (CheckedTextView) convertView.findViewById(R.id.vaccinetedCheckedTextView);
         dewomedCheckedTextView = (CheckedTextView) convertView.findViewById(R.id.dewomedCheckedTextView);
         spayedCheckedTextView = (CheckedTextView) convertView.findViewById(R.id.spayedCheckedTextView);
-        editAnnouncementButton = (ImageButton) convertView.findViewById(R.id.editAnnouncementButton);
 
+        titleTextView.setText( announcement.getTitle() );
         dataTextView.setText( announcement.getDate() );
-        amountTextView.setText( "" +  announcement.getAmount() );
+        amountTextView.setText( context.getString(R.string.registercat_amoutcats) +  announcement.getAmount() );
         descriptionTextView.setText( announcement.getDescription() );
         vaccinetedCheckedTextView.setChecked( announcement.isVaccineted() );
         dewomedCheckedTextView.setChecked( announcement.isDewomed() );
         spayedCheckedTextView.setChecked( announcement.isSpayed() );
 
-        editAnnouncementButton.setOnClickListener( this );
-
         return convertView;
     }
 
-    @Override
-    public void onClick(View v) {
 
-    }
 }

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private User user;
 
-    private FragmentManager fragmentManager;
+    private static FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         user = User.getInstance();
         user.setUUID( fUser.getUid() );
 
-        openMapsFragment();
+        openAccountFragment();
     }
 
 
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.replace(R.id.main_content, new MapsFragment());
+        ft.replace(R.id.main_content, new MapsFragment()).addToBackStack("Map");
         ft.commit();
     }
 
@@ -128,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(R.id.main_content, new RegisterCatFragment()).addToBackStack( "teste" );
+        ft.replace(R.id.main_content, new RegisterCatFragment()).addToBackStack( "Register" );
         ft.commit();
     }
 
@@ -137,8 +138,9 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(R.id.main_content, new MyAnnouncementsFragment()).addToBackStack( "teste" );
+        ft.replace(R.id.main_content, new MyAnnouncementsFragment()).addToBackStack( "teste" );
         ft.commit();
     }
+
 
 }

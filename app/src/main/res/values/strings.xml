@@ -94,4 +94,7 @@
     <string name="list_iten_spayedcheck">Spayed</string>
     <string name="registercat_success_">Cat has been regitred!</string>
     <string name="registercat_title">Title</string>
+    <string name="registercat_informationcat">Description</string>
+    <string name="adoptcats_title">Title</string>
+    <string name="adoptcat_error_msg">No photo founded</string>
 </resources>

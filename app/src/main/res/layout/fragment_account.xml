@@ -22,6 +22,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="@dimen/margin_account_photo"
             android:contentDescription="@string/account_photo_description"
+            android:saveEnabled="false"
             android:src="@drawable/pata" />
 
         <TextView
@@ -79,7 +80,7 @@
                     android:padding="8dp">
 
                     <ImageView
-                        android:id="@+id/locationImageView"
+                        android:id="@+id/descriptionImageView"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_alignParentTop="true"
@@ -100,7 +101,7 @@
                         android:id="@+id/cityUserTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/locationImageView"
+                        android:layout_below="@+id/descriptionImageView"
                         android:layout_centerHorizontal="true"
                         android:text="Cotia" />
 
