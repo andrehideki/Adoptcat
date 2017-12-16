@@ -2,11 +2,9 @@ package com.adoptcat.adoptcat.activities;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -22,7 +20,6 @@ import android.widget.Toast;
 
 import com.adoptcat.adoptcat.R;
 import com.adoptcat.adoptcat.connection.Connection;
-import com.adoptcat.adoptcat.dialog.PhotoDialogFragment;
 import com.adoptcat.adoptcat.model.User;
 import com.adoptcat.adoptcat.utilities.Utility;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,8 +28,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.StorageReference;
-
-import java.io.IOException;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -171,7 +166,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 getString(R.string.dialog_choosephoto_option), getString(R.string.dialog_cancel_option)};
 
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder( RegisterActivity.this );
-        alertBuilder.setTitle( getString(R.string.dialog_title) );
+        alertBuilder.setTitle( getString(R.string.dialog_photo_title) );
         alertBuilder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

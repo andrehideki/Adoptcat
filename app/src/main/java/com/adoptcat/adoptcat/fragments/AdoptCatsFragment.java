@@ -10,11 +10,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckedTextView;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.adoptcat.adoptcat.R;
 import com.adoptcat.adoptcat.connection.Connection;
@@ -27,7 +26,7 @@ public class AdoptCatsFragment extends Fragment implements View.OnClickListener 
 
     private ImageView catPhotoImageView;
     private TextView titleTextView, descriptionAnnouncementTextView, amountTextView;
-    private CheckedTextView spayedcheckedTextView, vaccinatedcheckedTextView, dewomedCheckedTextView;
+    private CheckBox spayedcheckedTextView, vaccinatedcheckedTextView, dewomedCheckedTextView;
     private ImageButton callImageButton;
 
     private Announcement announcement;

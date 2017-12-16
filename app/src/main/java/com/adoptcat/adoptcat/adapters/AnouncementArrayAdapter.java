@@ -8,14 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
-import android.widget.ImageButton;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.adoptcat.adoptcat.R;
 import com.adoptcat.adoptcat.model.Announcement;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -35,27 +32,29 @@ public class AnouncementArrayAdapter extends ArrayAdapter<Announcement>  {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         Announcement announcement = this.announcements.get(position);
         convertView = LayoutInflater.from( this.context ).inflate( R.layout.list_item_announcements, null);
-        TextView dataTextView, amountTextView, descriptionTextView, titleTextView;
-        CheckedTextView vaccinetedCheckedTextView, dewomedCheckedTextView, spayedCheckedTextView;
+        TextView dataTextView, amountTextView, descriptionTextView, titleTextView,
+                vaccinetedTextView, dewomedTextView, spayedTextView;
 
         titleTextView = (TextView) convertView.findViewById(R.id.titleTextView);
         dataTextView = (TextView) convertView.findViewById(R.id.dataTextView);
         amountTextView = (TextView) convertView.findViewById(R.id.amountTextView);
         descriptionTextView = (TextView) convertView.findViewById(R.id.descriptionTextView);
-        vaccinetedCheckedTextView = (CheckedTextView) convertView.findViewById(R.id.vaccinetedCheckedTextView);
-        dewomedCheckedTextView = (CheckedTextView) convertView.findViewById(R.id.dewomedCheckedTextView);
-        spayedCheckedTextView = (CheckedTextView) convertView.findViewById(R.id.spayedCheckedTextView);
+        vaccinetedTextView = (TextView) convertView.findViewById(R.id.vaccinetedTextView);
+        dewomedTextView = (TextView) convertView.findViewById(R.id.dewomedTextView);
+        spayedTextView = (TextView) convertView.findViewById(R.id.spayedTextView);
 
         titleTextView.setText( announcement.getTitle() );
         dataTextView.setText( announcement.getDate() );
         amountTextView.setText( context.getString(R.string.registercat_amoutcats) +  announcement.getAmount() );
         descriptionTextView.setText( announcement.getDescription() );
-        vaccinetedCheckedTextView.setChecked( announcement.isVaccineted() );
-        dewomedCheckedTextView.setChecked( announcement.isDewomed() );
-        spayedCheckedTextView.setChecked( announcement.isSpayed() );
+        if( !announcement.isVaccineted() ) vaccinetedTextView.setVisibility(TextView.GONE);
+        if( !announcement.isDewomed() ) dewomedTextView.setVisibility(TextView.GONE);
+        if( !announcement.isSpayed() ) spayedTextView.setVisibility(TextView.GONE);
 
         return convertView;
     }
+
+
 
 
 }

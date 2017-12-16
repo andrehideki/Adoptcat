@@ -18,14 +18,13 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,14 +34,14 @@ import com.adoptcat.adoptcat.connection.Connection;
 import com.adoptcat.adoptcat.model.Announcement;
 import com.adoptcat.adoptcat.model.User;
 import com.adoptcat.adoptcat.utilities.Utility;
-import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -71,7 +70,7 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
     private int amount = 1;
     private boolean vaccinated, dewomed, spayed;
 
-    public final static String DIALOG_TAG = "LocationTag";
+    final long THREE_MB = 1024 * 1024 * 4;
 
 
 
@@ -102,14 +101,52 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
         finishFloatingActionButton.setOnClickListener( this );
         confirmFloatingActionButton.setOnClickListener( this );
 
+        try {
+            this.announcement = (Announcement) (getArguments()).get("announcement");
+        } catch (Exception e) {
+            Log.e("EXCEPTION", e.getMessage() );
+        }
+
+        if( announcement != null ) fillFields();
+
+
         return view;
+    }
+
+    private void fillFields() {
+        titleEditText.setText( this.announcement.getTitle() );
+        descriptionEditText.setText( this.announcement.getDescription());
+        amountEditText.setText( "" + this.announcement.getAmount() );
+        vaccinetedCheckbox.setChecked( this.announcement.isVaccineted());
+        spayedCheckbox.setChecked( this.announcement.isSpayed());
+        dewomedCheckbox.setChecked( this.announcement.isDewomed());
+        deflocationButton.setBackgroundColor( Color.GREEN );
+        deflocationButton.setTextColor( Color.WHITE );
+
+        if( announcement.isHasPhoto() ) {
+            StorageReference storageReference = Connection.getStorageReference().child(announcement.getId());
+            storageReference.getBytes(THREE_MB).addOnCompleteListener(new OnCompleteListener<byte[]>() {
+                @Override
+                public void onComplete(@NonNull Task<byte[]> task) {
+                    byte[] result = task.getResult();
+                    if (result.length > 0) {
+                        BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inJustDecodeBounds = true;
+                        BitmapFactory.decodeByteArray(result, 0, result.length, options);
+                        options.inSampleSize = calculateSize(options, catImageView.getWidth(), catImageView.getHeight());
+
+                        options.inJustDecodeBounds = false;
+                        catImageView.setImageBitmap(BitmapFactory.decodeByteArray(result, 0, result.length, options));
+                    }
+                }
+            });
+        }
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        this.announcement = new Announcement();
+        if( this.announcement == null)  this.announcement = new Announcement();
         user = User.getInstance();
     }
 
@@ -191,7 +228,8 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
         announcement.setVaccineted( vaccinated );
         announcement.setPhone( user.getPhone() );
         announcement.setUserUUID( userUUID );
-        announcement.setId( userUUID + amountOfAnnounces );
+        if( announcement.getId() == null ) announcement.setId( userUUID + amountOfAnnounces );
+
         //Manda a foto caso o usuário defina a foto
         if(photoUri != null) {
             StorageReference storageReference = Connection.getStorageReference().child(announcement.getId());
@@ -199,7 +237,8 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
             announcement.setHasPhoto( true );
         }
         //Salvando anuncio
-        DatabaseReference databaseReference = Connection.getAnnouncementsDatabaseReference().child(userUUID + amountOfAnnounces);
+        DatabaseReference databaseReference = Connection.getAnnouncementsDatabaseReference().
+                child( announcement.getId() );
         databaseReference.setValue( announcement ).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -210,7 +249,6 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
         user.setAmountOfAnnounces( user.getAmountOfAnnounces() + 1);
         databaseReference = Connection.getDatabaseUsersReference().child(userUUID);
         databaseReference.setValue( user );
-
     }
 
 
@@ -247,7 +285,7 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
         getString(R.string.dialog_choosephoto_option), getString(R.string.dialog_cancel_option)};
 
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-        alertBuilder.setTitle( getString(R.string.dialog_title) );
+        alertBuilder.setTitle( getString(R.string.dialog_photo_title) );
         alertBuilder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -332,6 +370,20 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
 
     private void showMessage( String msg ) {
         Toast.makeText( getContext(), msg, Toast.LENGTH_LONG ).show();
+    }
+
+    private int calculateSize(BitmapFactory.Options options, int imageViewWidth, int imageViewHeight) {
+        int width = options.outWidth;
+        int height = options.outHeight;
+        int f = 1;
+        if( height > imageViewHeight || width > imageViewHeight ) {
+            int halfWidth = width / 2;
+            int halfHeight = height / 2;
+            while( halfHeight / f > imageViewHeight && halfWidth / f > imageViewWidth ) {
+                f *= 2;
+            }
+        }
+        return f;
     }
 
 
