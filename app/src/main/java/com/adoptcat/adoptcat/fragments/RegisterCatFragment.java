@@ -212,8 +212,8 @@ public class RegisterCatFragment extends Fragment implements View.OnClickListene
         spayed = spayedCheckbox.isChecked();
         dewomed = dewomedCheckbox.isChecked();
         vaccinated = vaccinetedCheckbox.isChecked();
-        //TODO verificar se o usuário configurau a sua localização
-        return !description.isEmpty() && amount > 0;
+        return !description.isEmpty() && amount > 0 &&
+                !(announcement.getLatitude() == 0 && announcement.getLongitude() == 0);
     }
 
     private void finishAnnouncement() {

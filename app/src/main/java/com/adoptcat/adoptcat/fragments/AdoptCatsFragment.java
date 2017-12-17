@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,8 +24,8 @@ import com.google.firebase.storage.StorageReference;
 public class AdoptCatsFragment extends Fragment implements View.OnClickListener {
 
     private ImageView catPhotoImageView;
-    private TextView titleTextView, descriptionAnnouncementTextView, amountTextView;
-    private CheckBox spayedcheckedTextView, vaccinatedcheckedTextView, dewomedCheckedTextView;
+    private TextView titleTextView, descriptionAnnouncementTextView, amountTextView,
+            spayedTextView, vaccinatedTextView, dewomedTextView;
     private ImageButton callImageButton;
 
     private Announcement announcement;
@@ -45,9 +44,9 @@ public class AdoptCatsFragment extends Fragment implements View.OnClickListener 
         amountTextView = view.findViewById(R.id.amountTextView);
         catPhotoImageView = view.findViewById(R.id.catPhotoImageView);
         callImageButton = view.findViewById(R.id.callImageButton);
-        spayedcheckedTextView = view.findViewById(R.id.spayedcheckedTextView);
-        vaccinatedcheckedTextView = view.findViewById(R.id.vaccinatedcheckedTextView);
-        dewomedCheckedTextView = view.findViewById(R.id.dewomedCheckedTextView);
+        spayedTextView = view.findViewById(R.id.spayedTextView);
+        vaccinatedTextView = view.findViewById(R.id.vaccinatedTextView);
+        dewomedTextView = view.findViewById(R.id.dewomedTextView);
 
         callImageButton.setOnClickListener( this );
 
@@ -66,9 +65,10 @@ public class AdoptCatsFragment extends Fragment implements View.OnClickListener 
         titleTextView.setText(announcement.getTitle());
         descriptionAnnouncementTextView.setText( announcement.getTitle() );
         amountTextView.setText( announcement.getAmount() + "");
-        spayedcheckedTextView.setChecked( announcement.isSpayed() );
-        vaccinatedcheckedTextView.setChecked( announcement.isVaccineted() );
-        dewomedCheckedTextView.setChecked( announcement.isDewomed() );
+        if( !announcement.isSpayed() ) spayedTextView.setVisibility(TextView.GONE);
+        if( !announcement.isVaccineted() ) vaccinatedTextView.setVisibility(TextView.GONE);
+        if( !announcement.isDewomed() ) dewomedTextView.setVisibility(TextView.GONE);
+
 
         if( announcement.isHasPhoto() ) {
             storageReference.getBytes(THREE_MB).addOnCompleteListener(new OnCompleteListener<byte[]>() {

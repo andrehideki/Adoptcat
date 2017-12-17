@@ -32,12 +32,11 @@
     <string name="registercat_annotation">Nota</string>
     <string name="adoptcats_description">Descrição</string>
     <string name="adoptcats_annotation">Notas</string>
-    <string name="phone_user" />
-    <string name="city_user" />
+    <string name="phone_user" >Telefone do usuário</string>
+    <string name="city_user" >Cidade do usuário</string>
     <string name="user_name" >Nome do usuário</string>
-    <string name="user_email" />
-    <string name="user_cat" />
-    <string name="phone_user_cat" />
+    <string name="user_cat" >Gato do usuário</string>
+    <string name="phone_user_cat" >Telefone</string>
     <string name="email_adoptcat" />
     <string name="call">Ligar</string>
 
@@ -91,8 +90,14 @@
     <string name="list_iten_dewomedcheck">Vernifugado</string>
     <string name="list_iten_spayedcheck">Castrado</string>
     <string name="registercat_success_">O gato foi Registrado!</string>
-    <string name="registercat_title">Títuko</string>
+    <string name="registercat_title">Título</string>
     <string name="registercat_informationcat">Descrição</string>
     <string name="adoptcats_title">Título</string>
     <string name="adoptcat_error_msg">Foto não encontrada</string>
+    <string name="dialog_photo_title">Foto</string>
+    <string name="dialog_announcement_title">Anúncio</string>
+    <string name="dialog_edit_announcement_option">Editar anúncio</string>
+    <string name="dialog_delete_announcement_option">Deletar anúncio</string>
+    <string name="myannounces_annoucement_deleted">Anuncio deletado</string>
+    <string name="user_email">Email do usuário</string>
 </resources>

@@ -64,42 +64,37 @@
             android:padding="10dp"
             app:cardCornerRadius="8dp">
 
-            <GridLayout
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/gridLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:columnCount="2"
+                android:orientation="vertical"
                 android:padding="8dp">
 
-                <ImageView
-                    android:id="@+id/descriptionImageView"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_column="0"
-                    android:layout_gravity="end"
-                    android:src="@drawable/ic_edit" />
+
 
                 <TextView
                     android:id="@+id/descriptionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
                     android:contentDescription="@string/registercat_description"
+                    android:layout_gravity="center"
                     android:text="@string/registercat_description"
-                    android:textStyle="bold" />
-
+                    android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/descriptionAnnouncementTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
                     android:layout_gravity="center"
-                    android:layout_row="1"
-                    android:layout_columnSpan="2"
-                    android:text="Descrição" />
-
-            </GridLayout>
+                    android:gravity="center"
+                    android:text="Descrição"/>
+            </LinearLayout>
+            </ScrollView>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -108,109 +103,91 @@
             android:elevation="8dp"
             app:cardCornerRadius="8dp">
 
-            <GridLayout
+            <LinearLayout
+                android:id="@+id/gridLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="8dp"
-                android:columnCount="2">
-
-                <ImageView
-                    android:id="@+id/amountImageView"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_column="0"
-                    android:layout_gravity="end"
-                    android:src="@drawable/ic_cat" />
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
                     android:contentDescription="@string/registercat_amoutcats"
                     android:text="@string/registercat_amoutcats"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="center"/>
 
                 <TextView
                     android:id="@+id/amountTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_row="1"
+                    android:layout_marginTop="8dp"
                     android:contentDescription="@string/phone_user"
                     android:text="Quantidade"
-                    android:textStyle="italic" />
-
-            </GridLayout>
+                    android:textStyle="italic"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="89dp"
             android:elevation="8dp"
             app:cardCornerRadius="8dp">
 
-            <GridLayout
+            <LinearLayout
+                android:id="@+id/gridLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dp"
-                android:columnCount="2">
+                android:columnCount="2"
+                android:orientation="vertical">
 
-                <ImageView
+                <!--<ImageView
                     android:id="@+id/informationImageView"
-                    android:layout_width="20dp"
+                    android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:layout_column="0"
-                    android:layout_gravity="end"
-                    android:layout_row="0"
-                    android:src="@drawable/icon_notifies" />
+                    android:layout_marginEnd="46dp"
+                    android:layout_marginStart="108dp"
+                    android:src="@drawable/icon_notifies"
+                    app:layout_constraintBottom_toTopOf="@+id/spayedTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/informationtextView"
+                    app:layout_constraintStart_toStartOf="parent" /> -->
 
                 <TextView
                     android:id="@+id/informationtextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_gravity="center"
                     android:contentDescription="@string/registercat_amoutcats"
                     android:text="@string/registercat_informationcat"
-
-                    android:textStyle="bold" />
-
-                <CheckBox
-                    android:id="@+id/spayedcheckedTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_columnSpan="2"
-                    android:layout_row="1"
-                    android:checked="false"
                     android:layout_gravity="center"
-                    android:text="@string/list_iten_spayedcheck"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse" />
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/informationImageView"
+                    tools:layout_editor_absoluteY="20dp" />
 
-                <CheckBox
-                    android:id="@+id/vaccinatedcheckedTextView"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/spayedTextView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_columnSpan="2"
-                    android:layout_row="2"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/list_iten_spayedcheck"/>
+
+                <TextView
+                    android:id="@+id/vaccinatedTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/registercat_check_vaccinated"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse" />
-
-                <CheckBox
-                    android:id="@+id/dewomedCheckedTextView"
-                    android:layout_width="wrap_content"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/dewomedTextView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_columnSpan="2"
-                    android:layout_row="3"
                     android:text="@string/registercat_check_dewormed"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse" />
-
-            </GridLayout>
+                    android:gravity="center"/>
+            </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
 </LinearLayout>

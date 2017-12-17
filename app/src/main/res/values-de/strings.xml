@@ -32,13 +32,12 @@
     <string name="registercat_annotation">Hinweis</string>
     <string name="adoptcats_description">Beschreibung</string>
     <string name="adoptcats_annotation">Anmerkungen</string>
-    <string name="phone_user" />
-    <string name="city_user" />
-    <string name="user_name" />
-    <string name="user_email" />
-    <string name="user_cat" />
-    <string name="phone_user_cat" />
-    <string name="email_adoptcat" />
+    <string name="phone_user" >Benutzertelefon</string>
+    <string name="city_user" >"Benutzer Stadt "</string>
+    <string name="user_name" >Nutzername</string>
+    <string name="user_email" >Benutzer Email</string>
+    <string name="user_cat" >"Benutzer Katze "</string>
+    <string name="phone_user_cat" >Telefon</string>
     <string name="call">Anruf</string>
 
     <string name="register_image_logo">Benutzerregistrierungsbildschirm</string>
@@ -95,4 +94,9 @@
     <string name="registercat_informationcat">Beschreibung</string>
     <string name="adoptcats_title">Titel</string>
     <string name="adoptcat_error_msg">Kein Foto gegründet</string>
+    <string name="dialog_photo_title">Foto</string>
+    <string name="dialog_announcement_title">"Ankündigung "</string>
+    <string name="dialog_edit_announcement_option">Editar Ankündigung</string>
+    <string name="dialog_delete_announcement_option">Ankündigung löschen</string>
+    <string name="myannounces_annoucement_deleted">Ankündigung wurde gelöscht</string>
 </resources>

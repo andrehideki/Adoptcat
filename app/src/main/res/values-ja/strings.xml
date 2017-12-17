@@ -32,12 +32,12 @@
     <string name="registercat_annotation">注意</string>
     <string name="adoptcats_description">説明</string>
     <string name="adoptcats_annotation">ノート</string>
-    <string name="phone_user" />
-    <string name="city_user" />
-    <string name="user_name" />
-    <string name="user_email" />
-    <string name="user_cat" />
-    <string name="phone_user_cat" />
+    <string name="phone_user" >" ユーザーの電話"</string>
+    <string name="city_user" >ユーザー都市</string>
+    <string name="user_name" >"ユーザー名 "</string>
+    <string name="user_email" >ユーザーメール</string>
+    <string name="user_cat" >"ユーザーネコ "</string>
+    <string name="phone_user_cat" >電話</string>
     <string name="email_adoptcat" />
     <string name="call">コール</string>
 
@@ -95,4 +95,9 @@
     <string name="registercat_informationcat">説明</string>
     <string name="adoptcats_title">タイトル</string>
     <string name="adoptcat_error_msg">写真はありません</string>
+    <string name="dialog_photo_title">フォト</string>
+    <string name="dialog_announcement_title">アナウンス</string>
+    <string name="dialog_edit_announcement_option">編集者発表</string>
+    <string name="dialog_delete_announcement_option">発表を削除する</string>
+    <string name="myannounces_annoucement_deleted">お知らせが削除されました</string>
 </resources>

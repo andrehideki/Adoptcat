@@ -32,12 +32,12 @@
     <string name="registercat_annotation">Nota</string>
     <string name="adoptcats_description">Descripción</string>
     <string name="adoptcats_annotation">Notas</string>
-    <string name="phone_user" />
-    <string name="city_user" />
-    <string name="user_name" />
-    <string name="user_email" />
-    <string name="user_cat" />
-    <string name="phone_user_cat" />
+    <string name="phone_user" >"teléfono de usuario "</string>
+    <string name="city_user" >ciudad de usuario</string>
+    <string name="user_name" >nombre de usuario</string>
+    <string name="user_email" >email de usuario</string>
+    <string name="user_cat" >felino del usuario</string>
+    <string name="phone_user_cat" >Telefono</string>
     <string name="email_adoptcat" />
     <string name="call">llamada</string>
 
@@ -95,4 +95,9 @@
     <string name="registercat_informationcat">Descripción</string>
     <string name="adoptcats_title">Título</string>
     <string name="adoptcat_error_msg">No hay foto fundada</string>
+    <string name="dialog_photo_title">Foto</string>
+    <string name="dialog_announcement_title">Anuncio</string>
+    <string name="dialog_edit_announcement_option">Editar anuncio</string>
+    <string name="myannounces_annoucement_deleted">Anunicio eliminado</string>
+    <string name="dialog_delete_announcement_option">Eliminar anuncio</string>
 </resources>
